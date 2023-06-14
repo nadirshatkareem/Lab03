@@ -9,6 +9,9 @@ Parameters:
   sales_csv_path = Full path of the sales data CSV file
 """
 import pandas as pd
+import sys
+import os.path
+from datetime import datetime
 
 def main():
     sales_csv_path = get_sales_csv_path()
@@ -21,10 +24,23 @@ def get_sales_csv_path():
     Returns:
         str: Path of sales data CSV file
     """
-    # TODO: Check whether command line parameter provided
-    # TODO: Check whether provide parameter is valid path of file
-    # TODO: Return path of sales data CSV file
-    return 
+    #Check whether command line parameter provided
+
+    num_params = len(sys.argv) - 1
+    if num_params < 1:
+        print("Error: missing csv path parameter.")
+        sys.exit()
+
+    #Check whether provide parameter is valid path of file
+
+    csv_path = sys.argv[1]
+    if not os.path.isfile(csv_path):
+        print("Error: csv path is not an existing file.")
+        sys.exit()
+
+
+    #Return path of sales data CSV file
+    return os.path.abspath(csv_path)
 
 def create_orders_dir(sales_csv_path):
     """Creates the directory to hold the individual order Excel sheets
@@ -35,8 +51,18 @@ def create_orders_dir(sales_csv_path):
     Returns:
         str: Path of orders directory
     """
-    # TODO: Get directory in which sales data CSV file resides
-    # TODO: Determine the path of the directory to hold the order data files
+    #Get directory in which sales data CSV file resides
+    sales_csv_dir = os.path.dirname(sales_csv_path)
+    #print(f"{sales_csv_dir}")
+
+
+    #Determine the path of the directory to hold the order data files
+    todays_date = date.today().isoformat()
+    orders_dir = f'Orders_{todays_date}'
+    order_dir_path = os.path.join(sales_csv_dir, orders_dir)
+
+
+
     # TODO: Create the orders directory if it does not already exist
     # TODO: Return path of orders directory
     return
