@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run with csv path",
+            "type": "python",
+            "request": "launch",
+            "program": "process_sales_data.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args" : ["sales_data.csv"]
+        },
+        {
+            "name": "Run with invalid csv path",
+            "type": "python",
+            "request": "launch",
+            "program": "process_sales_data.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args" : ["sales_data123.csv"]
+        },
+        {
+            "name": "Run without csv path",
+            "type": "python",
+            "request": "launch",
+            "program": "process_sales_data.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
